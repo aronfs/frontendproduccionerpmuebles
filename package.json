@@ -2,13 +2,14 @@
   "name": "sistema-ventas-v1",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "run": "ng serve --open",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+  "ng": "ng",
+  "run": "ng serve --open",
+  "start": "http-server dist/sistema-ventas-v1/browser",
+  "build": "ng build --configuration production",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test"
+},
+
   "private": true,
   "dependencies": {
     "@angular/cdk": "^19.2.3",
