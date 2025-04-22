@@ -1,0 +1,12 @@
+FROM cypress/included:12.17.4
+
+WORKDIR /e2e
+
+COPY ./cypress ./cypress
+COPY cypress.config.js .
+COPY package*.json ./
+
+RUN npm install
+
+CMD ["npx", "cypress", "run", "--config-file", "cypress.config.js"]
+

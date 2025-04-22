@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: app-backend
+    build:
+      context: ${CI_PROJECT_DIR}/backend5
+      dockerfile: ${CI_PROJECT_DIR}/backend5/Dockerfile
+    ports:
+      - "5000:80"
+    networks:
+      - app-network
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  frontend:
+    container_name: app-frontend
+    build:
+      context: ${CI_PROJECT_DIR}
+      dockerfile: ${CI_PROJECT_DIR}/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/index.html"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  postgres:
+    container_name: Servers
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: DBVENTA
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+ 
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

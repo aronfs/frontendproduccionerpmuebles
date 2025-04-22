@@ -1,0 +1,74 @@
+.toolbar-dark {
+    background-color: #252525;
+    color: #ffffff;
+    padding: 0 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.titulo {
+    margin-left: 15px;
+   
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.foto-perfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.icono-usuario {
+    font-size: 24px;
+}
+
+.rol {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.contenedor-dark {
+    background-color: #222020;
+    color: #ffffff;
+}
+
+.sidenav-dark {
+    width: 250px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.menu-item {
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #000000;
+}
+.label {
+    font-size: 14px;
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+.icono-menu {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.contenido-dark {
+    background-color: #121212;
+}
+
+.contenido {
+    height: 90vh;
+}

@@ -1,0 +1,73 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+  <form [formGroup]="formularioProducto" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+  
+    <!-- Foto de Producto -->
+    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 8px;">
+      <label class="custom-file-upload" style="margin-bottom: 8px;">
+        <input type="file" (change)="seleccionarImagen($event)" accept="image/*">
+        <mat-icon>cloud_upload</mat-icon> Elegir Foto
+      </label>
+    
+      <!-- Mensaje de error alineado -->
+      <mat-error *ngIf="formularioProducto.controls['foto'].hasError('required')" style="text-align: center;">
+        Debes subir una foto del producto.
+      </mat-error>
+    
+      <!-- Imagen del producto -->
+      <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Foto del producto" class="producto-img" style="width: 100px; height: 100px; border-radius: 8px; object-fit: cover;">
+    </div>
+
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Nombre</mat-label>
+      <input matInput autocomplete="off" formControlName="nombre">
+      <mat-icon matSuffix>label</mat-icon>
+      <mat-error *ngIf="formularioProducto.controls['nombre'].hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Categoría</mat-label>
+      <mat-select formControlName="idCategoria">
+        <mat-option *ngFor="let item of listaCategorias" [value]="item.idCategoria">
+          {{ item.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>category</mat-icon>
+      <mat-error *ngIf="formularioProducto.controls['idCategoria'].hasError('required')">
+        La categoría es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" autocomplete="off" formControlName="stock">
+      <mat-icon matSuffix>inventory</mat-icon>
+      <mat-error *ngIf="formularioProducto.controls['stock'].hasError('required')">
+        El stock es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Precio</mat-label>
+      <input matInput autocomplete="off" formControlName="precio">
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-error *ngIf="formularioProducto.controls['precio'].hasError('required')">
+        El precio es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_Producto()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosProducto ? 'Guardar Cambios' : 'Agregar Producto' }}
+  </button>
+</mat-dialog-actions>
+

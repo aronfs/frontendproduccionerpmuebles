@@ -1,0 +1,54 @@
+<h1>Dashboard-Ultima Semana</h1>
+
+<mat-card class="dashboard-container">
+  <mat-card-content>
+    <mat-grid-list cols="3" rowHeight="120px" gutterSize="10px">
+
+      <mat-grid-tile>
+        <mat-card class="card ingresos">
+          <mat-card-header>
+            <div mat-card-avatar class="icon-container ingresos">
+              <mat-icon color="primary">payments</mat-icon>
+            </div>
+            <mat-card-title>Total Ingresos</mat-card-title>
+            <mat-card-subtitle class="label">{{ totalIngresos }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="card ventas">
+          <mat-card-header>
+            <div mat-card-avatar class="icon-container ventas">
+              <mat-icon color="accent">sell</mat-icon>
+            </div>
+            <mat-card-title>Total Ventas</mat-card-title>
+            <mat-card-subtitle class="label">{{ totalVentas }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="card productos">
+          <mat-card-header>
+            <div mat-card-avatar class="icon-container productos">
+              <mat-icon color="warn">collections_bookmark</mat-icon>
+            </div>
+            <mat-card-title>Total Productos</mat-card-title>
+            <mat-card-subtitle class="label">{{ totalProductos }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <mat-card class="grafico-card">
+      <mat-card-content>
+        <div class="grafico-container">
+          <canvas id="graficoBarras"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-card-content>
+</mat-card>

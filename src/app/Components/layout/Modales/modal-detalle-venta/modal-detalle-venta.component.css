@@ -1,0 +1,59 @@
+.text-center {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Contenedor del diálogo */
+  .mat-dialog-container {
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  /* Estilos de la grilla */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  /* Ajustar el ancho de los campos */
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  /* Contenedor de la tabla */
+  .mat-elevation-z8 {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Ajustes para que la tabla sea responsiva */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: #1565c0; /* Azul Material Design */
+    color: white;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Ajustar el tamaño del diálogo */
+  @media (max-width: 768px) {
+    .mat-dialog-container {
+      width: 90vw;
+    }
+  }
+  

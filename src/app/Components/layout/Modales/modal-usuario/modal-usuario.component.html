@@ -1,0 +1,104 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+
+  <form [formGroup]="formularioUsuario" style="width: 100%;  display: flex; flex-direction: column; gap: 12px;">
+
+    <!-- Foto de Perfil -->
+    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 8px;">
+      <label class="custom-file-upload" style="margin-bottom: 8px;">
+        <input type="file" (change)="seleccionarImagen($event)" accept="image/*">
+        <mat-icon>cloud_upload</mat-icon> Elegir Foto
+      </label>
+    
+      <!-- Mensaje de error alineado -->
+      <mat-error *ngIf="formularioUsuario.controls['foto'].hasError('required')" style="text-align: center;">
+        Debes subir una foto de perfil.
+      </mat-error>
+    
+      <!-- Imagen de perfil más compacta -->
+      <img *ngIf="fotoUrl" [src]="fotoUrl" alt="Foto de perfil" class="perfil-img" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Nombre</mat-label>
+      <input matInput autocomplete="off" formControlName="nombre">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="formularioUsuario.controls['nombre'].hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Apellido</mat-label>
+      <input matInput autocomplete="off" formControlName="apellido">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="formularioUsuario.controls['apellido'].hasError('required')">
+        El apellido es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" autocomplete="off" formControlName="correo">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="formularioUsuario.controls['correo'].hasError('required')">
+        El correo es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="formularioUsuario.controls['correo'].hasError('email')">
+        Ingresa un correo válido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="idRol">
+        <mat-option *ngFor="let item of listaRoles" [value]="item.idRol">
+          {{ item.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>supervisor_account</mat-icon>
+      <mat-error *ngIf="formularioUsuario.controls['idRol'].invalid">
+        Debes seleccionar un rol.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="ocultarPassword ? 'password' : 'text'" formControlName="clave">
+      <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+        <mat-icon>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="formularioUsuario.controls['clave'].hasError('required')">
+        La contraseña es obligatoria.
+      </mat-error>
+      <mat-error *ngIf="formularioUsuario.controls['clave'].hasError('minlength')">
+        La contraseña debe tener al menos 8 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Confirmar Contraseña</mat-label>
+      <input matInput [type]="ocultarPassword ? 'password' : 'text'" formControlName="confirmarClave">
+      <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+        <mat-icon>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="formularioUsuario.controls['confirmarClave'].hasError('required')">
+        Debes confirmar la contraseña.
+      </mat-error>
+      <mat-error *ngIf="formularioUsuario.hasError('passwordMismatch')">
+        Las contraseñas no coinciden.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_Usuario()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosUsuario ? 'Guardar Cambios' : 'Agregar Usuario' }}
+  </button>
+</mat-dialog-actions>

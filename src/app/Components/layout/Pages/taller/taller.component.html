@@ -1,0 +1,58 @@
+<h1 class="taller-compo" style="margin: 20px 0px 0px 4px">Talleres</h1>
+
+<mat-card class="dash" style="margin: 20px 40px 40px 40px; padding: 20px;">
+  <mat-card-title class="carta">
+    <button style="color: white; background-color:#1E1E1E;" mat-raised-button (click)="nuevoTaller()">
+      <mat-icon class="icon-mat">add</mat-icon> Nuevo Taller
+    </button>
+  </mat-card-title>
+
+  <mat-divider style="margin: 20px 0;"></mat-divider>
+  <mat-card-content style="color: white;">
+    <mat-form-field appearance="outline" style="width: 300px;">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="aplicarFiltroTabla($event)" #input>
+    </mat-form-field>
+
+    <div class="tabla-container">
+      <table mat-table [dataSource]="dataListaTalleres" class="custom-table">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element">{{element.descripcion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ubicacion">
+          <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+          <td mat-cell *matCellDef="let element">{{element.ubicacion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let element">{{element.telefono}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef style="width: 120px;">Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="editarTaller(element)">
+              <mat-icon class="icon-label-edit">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminarTaller(element)">
+              <mat-icon class="icon-label-delete">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnasTable"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasTable;"></tr>
+      </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccione página"></mat-paginator>
+  </mat-card-content>
+</mat-card>

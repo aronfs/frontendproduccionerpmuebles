@@ -1,0 +1,65 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+  <form [formGroup]="formularioWip" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+  
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Operador</mat-label>
+      <mat-select formControlName="idUsuario">
+        <mat-option *ngFor="let usuario of listaUsuarios" [value]="usuario.idUsuario">
+          {{ usuario.nombreCompleto }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="formularioWip.controls['idUsuario'].hasError('required')">
+        Debes seleccionar un operador.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option value="iniciado">Iniciado</mat-option>
+        <mat-option value="pausado">Pausado</mat-option>
+        <mat-option value="en proceso">En Proceso</mat-option>
+        <mat-option value="completado">Completado</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>assignment</mat-icon>
+      <mat-error *ngIf="formularioWip.controls['estado'].hasError('required')">
+        El estado es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fecha_inicio">
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-icon matSuffix>event</mat-icon>
+      <mat-error *ngIf="formularioWip.controls['fecha_inicio'].hasError('required')">
+        La fecha de inicio es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fecha_fin">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+      <mat-icon matSuffix>event</mat-icon>
+      <mat-error *ngIf="formularioWip.controls['fecha_fin'].hasError('required')">
+        La fecha de fin es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_Wip()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosWip.wip ? 'Guardar Cambios' : 'Asignar Operador' }}
+  </button>
+</mat-dialog-actions>

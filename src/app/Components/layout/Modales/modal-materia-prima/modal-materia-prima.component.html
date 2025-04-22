@@ -1,0 +1,59 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+  <form [formGroup]="formularioMateriaPrima" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+  
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Producto</mat-label>
+      <mat-select formControlName="idProducto">
+        <mat-option *ngFor="let producto of listaProductos" [value]="producto.idProducto">
+          {{ producto.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>inventory_2</mat-icon>
+      <mat-error *ngIf="formularioMateriaPrima.controls['idProducto'].hasError('required')">
+        Debes seleccionar un producto.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Unidad de Medida</mat-label>
+      <input matInput autocomplete="off" formControlName="unidadMedida">
+      <mat-icon matSuffix>straighten</mat-icon>
+      <mat-error *ngIf="formularioMateriaPrima.controls['unidadMedida'].hasError('required')">
+        La unidad de medida es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" rows="3"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      <mat-error *ngIf="formularioMateriaPrima.controls['descripcion'].hasError('required')">
+        La descripción es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" autocomplete="off" formControlName="precio">
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-error *ngIf="formularioMateriaPrima.controls['precio'].hasError('required')">
+        El precio es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="formularioMateriaPrima.controls['precio'].hasError('min')">
+        El precio debe ser mayor o igual a 0.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_MateriaPrima()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosMateriaPrima ? 'Guardar Cambios' : 'Agregar Materia Prima' }}
+  </button>
+</mat-dialog-actions>

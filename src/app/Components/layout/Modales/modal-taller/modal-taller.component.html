@@ -1,0 +1,52 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+  <form [formGroup]="formularioTaller" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+  
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Nombre</mat-label>
+      <input matInput autocomplete="off" formControlName="nombre">
+      <mat-icon matSuffix>business</mat-icon>
+      <mat-error *ngIf="formularioTaller.controls['nombre'].hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" rows="3"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      <mat-error *ngIf="formularioTaller.controls['descripcion'].hasError('required')">
+        La descripción es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Ubicación</mat-label>
+      <input matInput autocomplete="off" formControlName="ubicacion">
+      <mat-icon matSuffix>location_on</mat-icon>
+      <mat-error *ngIf="formularioTaller.controls['ubicacion'].hasError('required')">
+        La ubicación es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Teléfono</mat-label>
+      <input matInput autocomplete="off" formControlName="telefono">
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-error *ngIf="formularioTaller.controls['telefono'].hasError('required')">
+        El teléfono es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_Taller()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosTaller ? 'Guardar Cambios' : 'Agregar Taller' }}
+  </button>
+</mat-dialog-actions> 

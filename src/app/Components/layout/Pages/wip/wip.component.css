@@ -1,0 +1,255 @@
+@import '../styles/base-styles.css';
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background-color: #f5f5f5;
+  color: #333;
+  font-weight: 500;
+  padding: 12px 16px;
+}
+
+td.mat-cell {
+  padding: 12px 16px;
+  color: #666;
+}
+
+tr.mat-row:hover {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para los estados */
+.estado-iniciado {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.estado-pausado {
+  background-color: #fff3e0;
+  color: #f57c00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.estado-proceso {
+  background-color: #e8f5e9;
+  color: #388e3c;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.estado-completado {
+  background-color: #f1f8e9;
+  color: #689f38;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Estilos para el paginador */
+mat-paginator {
+  background: transparent;
+  border-top: 1px solid #eee;
+}
+
+/* Estilos para los botones de acción */
+button.mat-icon-button {
+  margin: 0 4px;
+}
+
+/* Estilos para el formulario de búsqueda */
+mat-form-field {
+  width: 100%;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    margin-bottom: 10px;
+  }
+
+  th.mat-header-cell, td.mat-cell {
+    padding: 8px;
+  }
+}
+
+/* Estilos específicos para WIP */
+.wip-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--secondary-bg);
+  border-radius: 8px;
+}
+
+.wip-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.wip-table {
+  background: var(--primary-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.wip-table-header {
+  background: var(--secondary-bg);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wip-table-header h2 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.wip-search {
+  width: 300px;
+}
+
+.wip-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.wip-status.iniciado {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.wip-status.pausado {
+  background-color: var(--warn-color);
+  color: white;
+}
+
+.wip-status.en-proceso {
+  background-color: #ff9800;
+  color: white;
+}
+
+.wip-status.completada {
+  background-color: var(--success-color);
+  color: white;
+}
+
+/* Estilos para el modal de detalles */
+.wip-details {
+  padding: 16px;
+}
+
+.wip-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.wip-details-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.wip-details-card {
+  background: var(--secondary-bg);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.wip-details-card h3 {
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.wip-details-card p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Estilos para el botón de acción flotante */
+.wip-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+}
+
+/* Estilos para el diálogo de confirmación */
+.wip-confirm-dialog {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+}
+
+.wip-confirm-dialog .mat-dialog-title {
+  color: var(--text-primary);
+}
+
+.wip-confirm-dialog .mat-dialog-content {
+  color: var(--text-secondary);
+}
+
+.wip-confirm-dialog .mat-dialog-actions {
+  justify-content: flex-end;
+  gap: 8px;
+}

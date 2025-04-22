@@ -1,0 +1,100 @@
+<h1 class="usuario-compo" style="margin: 20px 0px 0px 4px">Usuarios</h1>
+
+<mat-card class="dash" style="margin: 20px 40px 40px 40px; padding: 20px;">
+  <mat-card-title class="carta">
+    <button style="color: white; background-color:#1E1E1E;" mat-raised-button (click)="nuevoUsuario()">
+      <mat-icon class="icon-mat">add</mat-icon> Nuevo Usuario
+    </button>
+  </mat-card-title>
+
+  <mat-divider style="margin: 20px 0;"></mat-divider>
+
+  <mat-card-content style="color: white;">
+   
+    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+        <mat-button-toggle-group
+          name="estadoFiltro"
+          [(ngModel)]="estadoFiltro"
+          (change)="filtrarPorEstado()"
+          appearance="standard"
+          style="background: #222; border-radius: 8px; padding: 5px;"
+        >
+          <mat-button-toggle value="activos" style="color: gray;" >Activos</mat-button-toggle>
+          <mat-button-toggle value="noActivos" style="color: gray;">No Activos</mat-button-toggle>
+        </mat-button-toggle-group>
+      
+        <mat-form-field appearance="outline" style="width: 300px;">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="aplicarFiltroTabla($event)" #input>
+        </mat-form-field>
+      </div>
+
+    <div class="tabla-container">
+      <table mat-table [dataSource]="dataListaUsuarios" class="custom-table">
+
+        <ng-container matColumnDef="nombreCompleto">
+          <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+          <td mat-cell *matCellDef="let element">{{element.nombreCompleto}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef>Correo</th>
+          <td mat-cell *matCellDef="let element">{{element.correo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rolDescripcion">
+          <th mat-header-cell *matHeaderCellDef>Rol Descripción</th>
+          <td mat-cell *matCellDef="let element">{{element.rolDescripcion}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">{{element.esActivo == 1 ? 'Activo' : 'No activo'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="foto">
+          <th mat-header-cell *matHeaderCellDef>Imagen</th>
+          <td mat-cell *matCellDef="let element">
+            <img *ngIf="element.foto" [src]="element.foto" alt="Imagen del producto"
+              (error)="element.foto = null"
+              style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+            <span *ngIf="!element.foto">Sin imagen</span>
+          </td>
+        </ng-container>
+
+        <!-- 🔹 Acciones - Condicional para mostrar Activar/Eliminar Permanente si está en "No Activos" -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef style="width: 180px;">Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.esActivo == 1; else noActivo">
+              <button mat-icon-button color="primary" (click)="editarUsuario(element)">
+                <mat-icon class="icon-label-edit">edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="eliminarUsuario(element)">
+                <mat-icon class="icon-label-delete">delete</mat-icon>
+              </button>
+            </ng-container>
+
+            <ng-template #noActivo>
+              <button mat-icon-button color="accent" (click)="activarUsuario(element)">
+                <mat-icon class="icon-label-activate">check_circle</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="eliminarPermanenteUsuario(element)">
+                <mat-icon class="icon-label-delete">delete_forever</mat-icon>
+              </button>
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnasTable"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasTable"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="5">No hay datos que coincidan con el filtro "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator class="paginador" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

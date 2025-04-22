@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="header">
+    <h1>Gestión de Tipos de Mueble</h1>
+    <button mat-raised-button color="primary" (click)="nuevoTipoMueble()">
+      <mat-icon>add</mat-icon> Nuevo Tipo de Mueble
+    </button>
+  </div>
+
+  <div class="search-container">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="aplicarFiltroTabla($event)" placeholder="Buscar por nombre o descripción">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataListaTiposMueble" class="mat-elevation-z8">
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let tipoMueble"> {{tipoMueble.nombre}} </td>
+      </ng-container>
+
+      <!-- Descripción Column -->
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let tipoMueble"> {{tipoMueble.descripcion}} </td>
+      </ng-container>
+
+      <!-- Fecha Registro Column -->
+      <ng-container matColumnDef="fechaRegistro">
+        <th mat-header-cell *matHeaderCellDef> Fecha Registro </th>
+        <td mat-cell *matCellDef="let tipoMueble"> {{tipoMueble.fechaRegistro | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let tipoMueble">
+          <button mat-icon-button color="primary" (click)="editarTipoMueble(tipoMueble)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarTipoMueble(tipoMueble)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnasTable"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnasTable;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of tipos de mueble"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<mat-dialog-content style="width: 100%; max-width: 500px; padding: 16px;">
+  <form [formGroup]="formularioOrden" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+  
+    <!-- Campos del formulario -->
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Producto</mat-label>
+      <mat-select formControlName="idProducto" (selectionChange)="onProductoSeleccionado()">
+        <mat-option *ngFor="let producto of listaProductos" [value]="producto.idProducto">
+          {{ producto.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>inventory_2</mat-icon>
+      <mat-error *ngIf="formularioOrden.controls['idProducto'].hasError('required')">
+        Debes seleccionar un producto.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Cantidad</mat-label>
+      <input matInput type="number" autocomplete="off" formControlName="cantidad">
+      <mat-icon matSuffix>numbers</mat-icon>
+      <mat-error *ngIf="formularioOrden.controls['cantidad'].hasError('required')">
+        La cantidad es obligatoria.
+      </mat-error>
+      <mat-error *ngIf="formularioOrden.controls['cantidad'].hasError('min')">
+        La cantidad debe ser mayor a 0.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 8px;">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option value="iniciado">Iniciado</mat-option>
+        <mat-option value="pausado">Pausado</mat-option>
+        <mat-option value="en proceso">En Proceso</mat-option>
+        <mat-option value="completado">Completado</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>assignment</mat-icon>
+      <mat-error *ngIf="formularioOrden.controls['estado'].hasError('required')">
+        El estado es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Lista de materia prima -->
+    <div *ngIf="listaMateriaPrima.length > 0" style="margin-top: 16px;">
+      <h3>Materia Prima Requerida</h3>
+      <div formArrayName="detalles">
+        <div *ngFor="let mp of listaMateriaPrima; let i = index" [formGroupName]="i" style="margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <span style="flex: 1;">{{ mp.nombreProducto }}</span>
+            <mat-form-field appearance="outline" style="width: 120px;">
+              <mat-label>Cantidad</mat-label>
+              <input matInput type="number" formControlName="cantidad">
+              <mat-error *ngIf="detallesArray.at(i).get('cantidad')?.hasError('required')">
+                Requerido
+              </mat-error>
+              <mat-error *ngIf="detallesArray.at(i).get('cantidad')?.hasError('min')">
+                Mínimo 1
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<!-- Botones de acción -->
+<mat-dialog-actions align="end" style="padding: 8px; display: flex; justify-content: space-between;">
+  <button mat-stroked-button mat-dialog-close color="warn" style="flex: 1; margin-right: 8px;">
+    <mat-icon>arrow_back</mat-icon> Volver
+  </button>
+  <button mat-raised-button color="primary" (click)="guardarEditar_Orden()" style="flex: 1;">
+    <mat-icon>save</mat-icon> {{ datosOrden ? 'Guardar Cambios' : 'Agregar Orden' }}
+  </button>
+</mat-dialog-actions>

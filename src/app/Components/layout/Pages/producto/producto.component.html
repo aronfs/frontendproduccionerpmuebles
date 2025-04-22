@@ -1,0 +1,86 @@
+<h1 class="usuario-compo" style="margin: 20px 0px 0px 4px">Productos</h1>
+
+<mat-card class="dash" style="margin: 20px 40px 40px 40px; padding: 20px;">
+    <mat-card-title class="carta">
+        <button style="color: white; background-color:#1E1E1E;" mat-raised-button (click)="nuevoProducto()">
+            <mat-icon class="icon-mat">add</mat-icon> Nuevo Producto
+        </button>
+    </mat-card-title>
+
+    <mat-divider style="margin: 20px 0;"></mat-divider>
+
+    <mat-card-content style="color: white;">
+        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+            <mat-form-field appearance="outline" style="width: 300px;">
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="aplicarFiltroTabla($event)" #input>
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="tabla-container">
+            <table mat-table [dataSource]="dataListaProductos" class="custom-table">
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="categoria">
+                    <th mat-header-cell *matHeaderCellDef>Categoría</th>
+                    <td mat-cell *matCellDef="let element">{{ element.descripcionCategoria }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="stock">
+                    <th mat-header-cell *matHeaderCellDef>Stock</th>
+                    <td mat-cell *matCellDef="let element">{{ element.stock }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="precio">
+                    <th mat-header-cell *matHeaderCellDef>Precio</th>
+                    <td mat-cell *matCellDef="let element">${{ element.precio }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef>Estado</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.esActivo == 1 ? 'Activo' : 'No Activo' }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="foto">
+                    <th mat-header-cell *matHeaderCellDef>Imagen</th>
+                    <td mat-cell *matCellDef="let element">
+                        <img 
+                            *ngIf="element.foto" 
+                            [src]="element.foto" 
+                            alt="Imagen del producto" 
+                            (error)="element.foto = null" 
+                            style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                        <span *ngIf="!element.foto">Sin imagen</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef style="width: 120px;">Acciones</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary" (click)="editarProducto(element)">
+                            <mat-icon class="icon-label-edit">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="eliminarProducto(element)">
+                            <mat-icon class="icon-label-delete">delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnasTable"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnasTable"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="7">No hay datos que coincidan con el filtro "{{ input.value }}"</td>
+                </tr>
+            </table>
+
+            <mat-paginator class="paginador" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,94 @@
+/* Estilos generales */
+h1 {
+    color: #0d47a1; /* Azul oscuro */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Tarjeta del formulario */
+mat-card {
+    background: #e3f2fd; /* Azul claro */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Campos del formulario */
+.campos-formulario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+/* Estilos de los input y selects */
+mat-form-field {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+mat-select {
+    color: #0d47a1;
+}
+
+mat-icon {
+    color: #0d47a1;
+}
+
+/* Botón de búsqueda */
+.boton-buscar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1565c0 !important; /* Azul fuerte */
+    color: white !important;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.boton-buscar:hover {
+    background: #0d47a1 !important; /* Azul más oscuro */
+}
+
+/* Tabla */
+.custom-table {
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Encabezados de la tabla */
+th {
+    background: #1565c0 !important;
+    color: white !important;
+    text-align: center;
+}
+
+/* Filas */
+td {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Alternar colores de filas */
+tr:nth-child(even) {
+    background: #e3f2fd; /* Azul claro */
+}
+
+tr:nth-child(odd) {
+    background: white;
+}
+
+/* Iconos de acción */
+mat-icon-button {
+    color: #0d47a1 !important;
+}
+
+/* Estilos del paginador */
+mat-paginator {
+    background: #e3f2fd;
+    border-radius: 5px;
+}

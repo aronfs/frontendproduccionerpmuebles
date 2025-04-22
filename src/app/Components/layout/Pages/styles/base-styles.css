@@ -1,0 +1,119 @@
+/* Variables de colores */
+:root {
+  --primary-bg: #2c2c2c;
+  --secondary-bg: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #3d3d3d;
+  --hover-color: #3d3d3d;
+  --accent-color: #2196f3;
+  --warn-color: #f44336;
+  --success-color: #4caf50;
+}
+
+/* Estilos base para contenedores */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Estilos para tablas */
+.table-container {
+  background: var(--primary-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: 12px 16px;
+}
+
+td.mat-cell {
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr.mat-row:hover {
+  background-color: var(--hover-color);
+}
+
+/* Estilos para botones de acción */
+button.mat-icon-button {
+  margin: 0 4px;
+}
+
+button.mat-icon-button[color="primary"] {
+  color: var(--accent-color);
+}
+
+button.mat-icon-button[color="warn"] {
+  color: var(--warn-color);
+}
+
+/* Estilos para formularios */
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field .mat-form-field-wrapper {
+  background-color: var(--primary-bg);
+  border-radius: 4px;
+}
+
+mat-form-field .mat-form-field-label {
+  color: var(--text-secondary);
+}
+
+mat-form-field .mat-form-field-underline {
+  background-color: var(--border-color);
+}
+
+/* Estilos para paginador */
+mat-paginator {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    margin-bottom: 10px;
+  }
+
+  th.mat-header-cell, td.mat-cell {
+    padding: 8px;
+  }
+} 

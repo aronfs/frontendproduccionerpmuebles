@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="toolbar-dark">
+
+    <button mat-icon-button (click)="sidenav.toggle();">
+        <mat-icon class="icono-menu">menu</mat-icon>
+    </button>
+
+    <h1 class="titulo">ERP</h1>
+
+    <span style="flex: 1 1 auto"></span>
+
+    <div class="usuario-info">
+        <img *ngIf="fotoUsuario" [src]="fotoUsuario" alt="Foto de perfil" class="foto-perfil">
+        <span *ngIf="!fotoUsuario" class="icono-usuario">👤</span>
+        <div>
+            <span>{{ correoUsuario }}</span>
+            <span class="rol">{{ rolUsuario }}</span>
+        </div>
+    </div>
+
+    <button mat-icon-button (click)="cerrarSesion()">
+        <mat-icon class="icono-menu">exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="contenedor-dark">
+    <mat-sidenav #sidenav mode="side" class="sidenav-dark">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu.url" class="menu-item">
+                <mat-icon class="icono-menu">{{menu.icono}}</mat-icon>
+                <span class="label">{{menu.nombre}}</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="contenido-dark">
+        <div class="contenido">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

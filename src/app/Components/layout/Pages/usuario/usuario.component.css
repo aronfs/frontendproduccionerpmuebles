@@ -1,0 +1,82 @@
+.dash{
+    background-color: #333232;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 15000px;
+
+    margin: 0 auto;
+}
+
+.label {
+    color:#000000
+}
+
+
+.icon-mat{
+    color: #ffffff;
+}
+
+.tabla-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #2c2c2c;
+    padding: 10px;
+}
+.icon-label-edit {
+    color: #050444;
+    opacity: 0.8;
+}
+
+.icon-label-delete {
+    color: #501111;
+    opacity: 0.8;
+}
+  
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #2C2C2C;
+}
+
+.custom-table th {
+    background-color: #1E1E1E;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    padding: 12px;
+}
+
+.custom-table td {
+    padding: 12px;
+    border-bottom: 1px solid #2C2C2C;
+    color: #ffffff;
+}
+
+.custom-table tr:hover {
+    background-color: #1E1E1E;
+    color: #ffffff;
+}
+
+button mat-icon-button {
+    margin: 0 5px;
+}
+
+.paginador {
+    display: flex;
+    justify-content: center;
+    background-color: #2C2C2C;
+    color: rgb(255, 255, 255)
+}
+.carta {
+    display: flex;
+     justify-content: space-between; 
+     align-items: center;
+}
+
+.mat-cell {
+    color: #2C2C2C;
+}
+

@@ -1,0 +1,137 @@
+/* Variables de tema oscuro */
+:root {
+  --primary-bg: #2c2c2c;
+  --secondary-bg: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #3d3d3d;
+  --hover-color: #3d3d3d;
+  --accent-color: #2196f3;
+  --warn-color: #f44336;
+  --success-color: #4caf50;
+}
+
+/* Estilos base para contenedores */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: var(--secondary-bg);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.header h1 {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Estilos para la búsqueda */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Estilos para tablas */
+.table-container {
+  background: var(--primary-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: 12px 16px;
+}
+
+td.mat-cell {
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr.mat-row:hover {
+  background-color: var(--hover-color);
+}
+
+/* Estilos para botones */
+.action-button {
+  margin: 0 4px;
+}
+
+.primary-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.warn-button {
+  background-color: var(--warn-color);
+  color: white;
+}
+
+/* Estilos para el paginador */
+mat-paginator {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Estilos para estados */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.status-inactive {
+  background-color: var(--warn-color);
+  color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-field {
+    max-width: 100%;
+  }
+
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 8px;
+  }
+} 

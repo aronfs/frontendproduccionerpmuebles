@@ -1,0 +1,366 @@
+/* Variables de colores */
+:root {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #2d2d2d;
+    --accent-color: #2196f3;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #404040;
+    --hover-color: #404040;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos generales */
+.titulo-seccion {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 500;
+    margin: 20px 0 0 4px;
+    letter-spacing: 0.5px;
+}
+
+.card-container {
+    background-color: var(--primary-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    margin: 20px 40px 40px 40px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 16px 0;
+}
+
+.btn-nuevo {
+    background: linear-gradient(45deg, var(--accent-color), #1976d2);
+    color: var(--text-primary);
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-nuevo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.icon-btn {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.divider {
+    margin: 20px 0;
+    border-color: var(--border-color);
+}
+
+.card-content {
+    color: var(--text-primary);
+}
+
+/* Estilos de búsqueda */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.search-field {
+    width: 300px;
+}
+
+.search-icon {
+    color: var(--text-secondary);
+}
+
+/* Estilos de tabla */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: var(--secondary-bg);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-header {
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+}
+
+.table-cell {
+    color: var(--text-secondary);
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.table-row:hover {
+    background-color: var(--hover-color);
+}
+
+/* Estilos de estado */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: var(--success-color);
+}
+
+.status-badge.inactive {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: var(--error-color);
+}
+
+/* Estilos de imagen */
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.no-image {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Estilos de acciones */
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-edit, .btn-delete {
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    color: var(--accent-color);
+}
+
+.btn-delete {
+    color: var(--error-color);
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos de paginador */
+.custom-paginator {
+    background-color: var(--secondary-bg);
+    color: var(--text-primary);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Estilos para mensaje sin datos */
+.no-data-row {
+    height: 200px;
+}
+
+.no-data-cell {
+    text-align: center;
+}
+
+.no-data-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-secondary);
+}
+
+.no-data-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+/* Estilos para Material */
+::ng-deep .mat-form-field {
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-label {
+    color: var(--text-secondary);
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: var(--border-color);
+}
+
+::ng-deep .mat-form-field-ripple {
+    background-color: var(--accent-color);
+}
+
+::ng-deep .mat-input-element {
+    color: var(--text-primary);
+}
+
+::ng-deep .mat-paginator {
+    background-color: var(--secondary-bg);
+    color: var(--text-primary);
+}
+
+::ng-deep .mat-paginator-page-size-label {
+    color: var(--text-secondary);
+}
+
+::ng-deep .mat-paginator-range-label {
+    color: var(--text-secondary);
+}
+
+::ng-deep .mat-select-value {
+    color: var(--text-primary);
+}
+
+::ng-deep .mat-select-arrow {
+    color: var(--text-secondary);
+}
+
+::ng-deep .mat-option {
+    color: var(--text-primary);
+    background-color: var(--primary-bg);
+}
+
+::ng-deep .mat-option:hover {
+    background-color: var(--hover-color);
+}
+
+.usuario-compo {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.dash {
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.icon-mat {
+    margin-right: 8px;
+}
+
+.tabla-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    background-color: #2D2D2D;
+    border-radius: 8px;
+}
+
+.custom-table th {
+    color: #FFFFFF;
+    font-weight: 500;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #3D3D3D;
+}
+
+.custom-table td {
+    color: #E0E0E0;
+    padding: 12px;
+    border-bottom: 1px solid #3D3D3D;
+}
+
+.custom-table tr:hover {
+    background-color: #3D3D3D;
+}
+
+.icon-label-edit {
+    color: #2196F3;
+}
+
+.icon-label-delete {
+    color: #F44336;
+}
+
+.paginador {
+    background-color: #2D2D2D;
+    color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+::ng-deep .mat-paginator {
+    background-color: #2D2D2D;
+    color: white;
+}
+
+::ng-deep .mat-paginator-page-size-label {
+    color: white;
+}
+
+::ng-deep .mat-paginator-range-label {
+    color: white;
+}
+
+::ng-deep .mat-select-value {
+    color: white;
+}
+
+::ng-deep .mat-select-arrow {
+    color: white;
+}
+
+::ng-deep .mat-form-field-label {
+    color: white;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: white;
+}
+
+::ng-deep .mat-form-field-ripple {
+    background-color: white;
+}
+
+::ng-deep .mat-input-element {
+    color: white;
+}
+
+button mat-icon-button {
+    margin: 0 5px;
+}
